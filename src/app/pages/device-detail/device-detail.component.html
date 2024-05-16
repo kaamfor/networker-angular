@@ -1,0 +1,9 @@
+<ng-template [ngIf]="this.device !== undefined">
+    <h1>Device details</h1>
+    <div>
+        
+        <app-interface-editor [interfaceList]="this.device.settings.interfaceList" (listSubmit)="interfaceListSubmitted($event)"></app-interface-editor>
+        <app-portforwarding-editor [portforwardList]="this.device.settings.portForwards" (listSubmit)="portForwardListSubmitted($event)"></app-portforwarding-editor>
+    </div>
+</ng-template>
+<p *ngIf="loadingFinished && !device">Device not found</p>

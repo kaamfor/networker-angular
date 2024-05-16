@@ -1,0 +1,26 @@
+<table *ngIf="this.deviceList.length">
+    <tr>
+        <th>Name</th>
+        <th>IP Addresses</th>
+        <th>Port forwards</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let device of this.deviceList">
+        <td>{{device.name}}</td>
+        <td class="span-rows">
+            <span *ngFor="let devInterface of device.settings.interfaceList">
+                {{devInterface.interfaceType}}: {{devInterface.address}}/{{devInterface.maskLength}}
+            </span>
+        </td>
+        <td class="span-rows">
+            <span *ngFor="let portForward of device.settings.portForwards">
+                {{portForward.wanPort}} -> {{portForward.lanHost}}:{{portForward.lanHostPort}}
+                <<ng-template [ngIf]="portForward.hairpinNAT">(Hairpin ON)</ng-template>
+            </span>
+        </td>
+        <td>
+            <button [routerLink]="'/device/' + device.id" mat-raised-button><mat-icon>edit</mat-icon></button>
+            <button (click)="deleteDevice(device.id)" mat-raised-button><mat-icon>delete</mat-icon></button>
+        </td>
+    </tr>
+</table>

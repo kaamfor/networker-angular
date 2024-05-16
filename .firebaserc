@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "networker-53843": {
+      "hosting": {
+        "networker": [
+          "networker-53843"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "networker-53843"
+  }
+}

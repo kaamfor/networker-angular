@@ -1,0 +1,44 @@
+<form [formGroup]="editorForm" (submit)="submitList()">
+    <!-- <div>
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" />
+    </div> -->
+    <ng-template [ngIf]="this.interfaces.controls.length">
+        <button mat-raised-button color="primary" type="submit">Submit changes (interface)</button>
+        <button mat-raised-button (click)="addInterfaceRow()">
+            <mat-icon>add</mat-icon>
+        </button>
+        
+        <div formArrayName="interfaces">
+            <div *ngFor="let interface of this.interfaces.controls; let i=index">
+                <div [formGroupName]="i">
+                    {{i}}
+
+                    <mat-form-field>
+                        <mat-label>Interface type</mat-label>
+                        <mat-select formControlName="interfaceType">
+                            <mat-option value="WAN">WAN</mat-option>
+                            <mat-option value="LAN">LAN</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input type="text" formControlName="address" matInput />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Network mask</mat-label>
+                        <input type="number" formControlName="maskLength" matInput />
+                    </mat-form-field>
+
+                    <button mat-raised-button color="primary" (click)="removeInterfaceRow(i)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <button mat-raised-button color="primary" type="submit" *ngIf="this.hasChanges">Submit changes (interface)</button>
+    <button mat-raised-button (click)="addInterfaceRow()">
+        <mat-icon>add</mat-icon> Add interface
+    </button>
+</form>

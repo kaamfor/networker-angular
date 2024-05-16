@@ -1,0 +1,45 @@
+<form [formGroup]="editorForm" (submit)="submitList()">
+    <!-- <div>
+        <label for="name">Name:</label>
+        <input type="text" formControlName="name" />
+    </div> -->
+    <ng-template [ngIf]="this.portForwards.controls.length">
+        <button mat-raised-button color="primary" type="submit">Submit changes (port-forwards)</button>
+        <button mat-raised-button (click)="addPortForwardRow()">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <div formArrayName="portForwards">
+            <div *ngFor="let portForward of this.portForwards.controls; let i=index">
+                <div [formGroupName]="i">
+                    {{i}}
+
+                    <mat-form-field>
+                        <mat-label>WAN (public) port</mat-label>
+                        <input type="number" formControlName="wanPort" matInput />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>LAN IP address to host</mat-label>
+                        <input type="text" formControlName="lanHost" matInput />
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Target port on LAN host</mat-label>
+                        <input type="number" formControlName="lanHostPort" matInput />
+                    </mat-form-field>
+
+                    <mat-checkbox formControlName="hairpinNAT" matInput>
+                        Enable Hairpin NAT
+                    </mat-checkbox>
+
+                    <button mat-raised-button color="primary" (click)="removePortForwardRow(i)">Remove</button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <button mat-raised-button color="primary" type="submit" *ngIf="this.hasChanges">Submit changes (port-forwards)</button>
+    <button mat-raised-button (click)="addPortForwardRow()">
+        <mat-icon>add</mat-icon>
+    </button>
+</form>
