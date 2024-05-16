@@ -8,7 +8,7 @@ import { DeviceService } from 'src/app/shared/services/device.service';
 @Component({
   selector: 'app-device-detail',
   templateUrl: './device-detail.component.html',
-  styleUrls: ['./device-detail.component.css']
+  styleUrls: ['./device-detail.component.scss']
 })
 export class DeviceDetailComponent implements OnInit {
   deviceId: string = '';
@@ -21,9 +21,10 @@ export class DeviceDetailComponent implements OnInit {
     this.actRoute.params.subscribe((param: any) => {
       this.deviceId = param.deviceId as string;
 
-      let action = this.deviceService.getById('K1CWREsh77f4RN28t2aJPIbjF9P2', this.deviceId).subscribe(
+      let action = this.deviceService.getById('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.deviceId).subscribe(
         device => {
-          this.device = device
+          this.device = device;
+
           this.loadingFinished = true;
           action.unsubscribe();
         });
@@ -33,14 +34,14 @@ export class DeviceDetailComponent implements OnInit {
   interfaceListSubmitted(interfaceList: DeviceInterface[]) {
     if (this.device !== undefined) {
       this.device.settings.interfaceList = interfaceList;
-      this.deviceService.update('K1CWREsh77f4RN28t2aJPIbjF9P2', this.device).then(console.log);
+      this.deviceService.update('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.device).then(console.log);
     }
   }
 
   portForwardListSubmitted(portForwardList: PortForward[]) {
     if (this.device !== undefined) {
       this.device.settings.portForwards = portForwardList;
-      this.deviceService.update('K1CWREsh77f4RN28t2aJPIbjF9P2', this.device).then(console.log);
+      this.deviceService.update('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.device).then(console.log);
     }
   }
 }

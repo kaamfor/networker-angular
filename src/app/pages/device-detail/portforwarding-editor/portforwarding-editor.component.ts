@@ -6,7 +6,7 @@ import { PortForward } from 'src/app/shared/models/PortForward';
 @Component({
   selector: 'app-portforwarding-editor',
   templateUrl: './portforwarding-editor.component.html',
-  styleUrls: ['./portforwarding-editor.component.css']
+  styleUrls: ['./portforwarding-editor.component.scss']
 })
 export class PortforwardingEditorComponent {
   hasChanges: boolean = false;

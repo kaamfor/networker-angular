@@ -1,8 +1,4 @@
 <form [formGroup]="editorForm" (submit)="submitList()">
-    <!-- <div>
-        <label for="name">Name:</label>
-        <input type="text" formControlName="name" />
-    </div> -->
     <ng-template [ngIf]="this.portForwards.controls.length">
         <button mat-raised-button color="primary" type="submit">Submit changes (port-forwards)</button>
         <button mat-raised-button (click)="addPortForwardRow()">
@@ -40,6 +36,6 @@
     </ng-template>
     <button mat-raised-button color="primary" type="submit" *ngIf="this.hasChanges">Submit changes (port-forwards)</button>
     <button mat-raised-button (click)="addPortForwardRow()">
-        <mat-icon>add</mat-icon>
+        <mat-icon>add</mat-icon> Add port forwarding
     </button>
 </form>

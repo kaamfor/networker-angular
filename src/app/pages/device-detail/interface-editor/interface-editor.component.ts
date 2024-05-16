@@ -5,7 +5,7 @@ import { DeviceInterface } from 'src/app/shared/models/DeviceInterface';
 @Component({
   selector: 'app-interface-editor',
   templateUrl: './interface-editor.component.html',
-  styleUrls: ['./interface-editor.component.css']
+  styleUrls: ['./interface-editor.component.scss']
 })
 export class InterfaceEditorComponent implements OnInit, OnChanges {
   hasChanges: boolean = false;

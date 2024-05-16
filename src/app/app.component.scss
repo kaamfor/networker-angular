@@ -1,0 +1,22 @@
+/* from example project */
+@media screen and (min-width: 576px) {
+    .hamburger-menu-wrapper {
+        display: none;
+    }
+}
+
+.title {
+    display: block;
+}
+
+.main-content {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+}
+.main-content-wrapper {
+    align-items: center;
+}

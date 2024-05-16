@@ -1,1 +1,21 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <app-menu [isTopNav]="false" [isLoggedIn]="false"></app-menu>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar color="primary">
+            <div class="hamburger-menu-wrapper">
+                <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>
+            <span class="title">Networker</span>
+            <app-menu [isTopNav]="true" [isLoggedIn]="false"></app-menu>
+        </mat-toolbar>
+        <div class="main-content">
+            <div class="main-content-wrapper">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

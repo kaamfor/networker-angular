@@ -5,7 +5,7 @@ import { Device } from 'src/app/shared/models/Device';
 @Component({
   selector: 'app-device-list',
   templateUrl: './device-list.component.html',
-  styleUrls: ['./device-list.component.css']
+  styleUrls: ['./device-list.component.scss']
 })
 export class DeviceListComponent implements OnInit {
   deviceList: Array<Device> = new Array();
@@ -13,16 +13,17 @@ export class DeviceListComponent implements OnInit {
 
   ngOnInit(): void {
     // TODO
-    let action = this.deviceService.getAll('K1CWREsh77f4RN28t2aJPIbjF9P2').subscribe(
+    let action = this.deviceService.getAll('j49EsvUDYRWCMUadsPfnNiVFKlo1').subscribe(
       item => {
         this.deviceList = item;
+        console.log(item)
         action.unsubscribe();
       })
   }
 
   createDevice(name: string): void {
     this.deviceService.create(
-      'K1CWREsh77f4RN28t2aJPIbjF9P2',
+      'j49EsvUDYRWCMUadsPfnNiVFKlo1',
       this.deviceService.buildDeviceFromName(name)
     );
   }
@@ -30,6 +31,6 @@ export class DeviceListComponent implements OnInit {
   // folyt. köv: auth-guard, authentikáció, de a legfontosabb a menü/navigáció
 
   deleteDevice(deviceId: string): void {
-    this.deviceService.delete('K1CWREsh77f4RN28t2aJPIbjF9P2', deviceId);
+    this.deviceService.delete('j49EsvUDYRWCMUadsPfnNiVFKlo1', deviceId);
   }
 }

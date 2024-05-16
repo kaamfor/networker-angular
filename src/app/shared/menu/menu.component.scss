@@ -1,0 +1,36 @@
+/* From example project */
+.nav-topmenu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-left: 10px;
+}
+
+.nav-topmenu a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-topmenu a:hover,
+.nav-topmenu a:active {
+    color: lightgray;
+}
+
+.nav-topmenu > ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-sidemenu {
+
+}
+
+.nav-sidemenu > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

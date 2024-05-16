@@ -1,9 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'node_modules/@angular/material/theming' as mat;
+
+// https://stackoverflow.com/questions/63078996/angular-material-10-how-to-use-primary-accent-warn-colors-in-my-own-styles
+// https: //github.com/angular/components/blob/main/guides/theming.md
+
+
+/* Material */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .span-rows > span {
     display: block;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /* From example application */
 .loading-indicator {

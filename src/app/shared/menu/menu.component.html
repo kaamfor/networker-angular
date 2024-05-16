@@ -1,0 +1,28 @@
+<ng-template [ngIf]="isTopNav !== undefined && isLoggedIn !== undefined">
+    <div *ngIf="isTopNav" class="nav-topmenu" fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px">
+            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+            <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/devices">Main</a></li>
+            <li *ngIf="isLoggedIn"><a routerLink="/logout">Logout</a></li>
+        </ul>
+    </div>
+    <mat-nav-list *ngIf="!isTopNav" class="nav-sidemenu">
+        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/login">
+            <mat-icon>login</mat-icon>
+            <span>Login</span>
+        </a>
+        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/register">
+            <mat-icon>app_registration</mat-icon>
+            <span>Register</span>
+        </a>
+        <a mat-list-item *ngIf="isLoggedIn" routerLink="/devices">
+            <mat-icon>grid_view</mat-icon>
+            <span>Main</span>
+        </a>
+        <a mat-list-item *ngIf="isLoggedIn" routerLink="/logout">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+        </a>
+    </mat-nav-list>
+</ng-template>
