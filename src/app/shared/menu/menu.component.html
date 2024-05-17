@@ -8,19 +8,19 @@
         </ul>
     </div>
     <mat-nav-list *ngIf="!isTopNav" class="nav-sidemenu">
-        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/login">
+        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/login" (click)="sidenavClicked()">
             <mat-icon>login</mat-icon>
             <span>Login</span>
         </a>
-        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/register">
+        <a mat-list-item *ngIf="!isLoggedIn" routerLink="/register" (click)="sidenavClicked()">
             <mat-icon>app_registration</mat-icon>
             <span>Register</span>
         </a>
-        <a mat-list-item *ngIf="isLoggedIn" routerLink="/devices">
+        <a mat-list-item *ngIf="isLoggedIn" routerLink="/devices" (click)="sidenavClicked()">
             <mat-icon>grid_view</mat-icon>
             <span>Main</span>
         </a>
-        <a mat-list-item *ngIf="isLoggedIn" routerLink="/logout">
+        <a mat-list-item *ngIf="isLoggedIn" routerLink="/logout" (click)="sidenavClicked()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
         </a>

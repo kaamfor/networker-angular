@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-menu',
@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 export class MenuComponent {
   @Input() isTopNav?: boolean = undefined;
   @Input() isLoggedIn?: boolean = undefined;
+  @Output() onSidenavClicked: EventEmitter<boolean> = new EventEmitter();
+
+  sidenavClicked() {
+    this.onSidenavClicked.emit(true);
+  }
 }

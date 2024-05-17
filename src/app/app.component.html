@@ -1,6 +1,6 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
-        <app-menu [isTopNav]="false" [isLoggedIn]="false"></app-menu>
+        <app-menu [isTopNav]="false" [isLoggedIn]="isLoggedIn" (onSidenavClicked)="sidenavMenuClicked(sidenav)"></app-menu>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
@@ -9,8 +9,8 @@
                     <mat-icon>menu</mat-icon>
                 </button>
             </div>
-            <span class="title">Networker</span>
-            <app-menu [isTopNav]="true" [isLoggedIn]="false"></app-menu>
+            <span class="title">{{title}}</span>
+            <app-menu [isTopNav]="true" [isLoggedIn]="isLoggedIn"></app-menu>
         </mat-toolbar>
         <div class="main-content">
             <div class="main-content-wrapper">
@@ -19,3 +19,14 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<!--
+- authguard
+- új eszköz hozzáadása
+- login rememberMe
+- validáció beállítása ?
+- eszközlista formázása
+- képernyő-kitöltő beállítások
+
+authguard: 11:20
+-->

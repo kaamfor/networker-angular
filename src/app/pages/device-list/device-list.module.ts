@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { DeviceListRoutingModule } from './device-list-routing.module';
 import { DeviceListComponent } from './device-list.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -13,7 +16,10 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     DeviceListRoutingModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class DeviceListModule { }

@@ -21,7 +21,7 @@ export class DeviceDetailComponent implements OnInit {
     this.actRoute.params.subscribe((param: any) => {
       this.deviceId = param.deviceId as string;
 
-      let action = this.deviceService.getById('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.deviceId).subscribe(
+      let action = this.deviceService.getById(this.userId, this.deviceId).subscribe(
         device => {
           this.device = device;
 
@@ -31,17 +31,21 @@ export class DeviceDetailComponent implements OnInit {
     })
   }
 
+  get userId() {
+    return JSON.parse(localStorage.getItem('userId') as string);
+  }
+
   interfaceListSubmitted(interfaceList: DeviceInterface[]) {
     if (this.device !== undefined) {
       this.device.settings.interfaceList = interfaceList;
-      this.deviceService.update('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.device).then(console.log);
+      this.deviceService.update(this.userId, this.device).then(console.log);
     }
   }
 
   portForwardListSubmitted(portForwardList: PortForward[]) {
     if (this.device !== undefined) {
       this.device.settings.portForwards = portForwardList;
-      this.deviceService.update('j49EsvUDYRWCMUadsPfnNiVFKlo1', this.device).then(console.log);
+      this.deviceService.update(this.userId, this.device).then(console.log);
     }
   }
 }

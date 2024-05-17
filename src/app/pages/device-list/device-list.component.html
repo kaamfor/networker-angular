@@ -1,4 +1,4 @@
-<table *ngIf="this.deviceList.length">
+<table>
     <tr>
         <th>Name</th>
         <th>IP Addresses</th>
@@ -21,6 +21,19 @@
         <td>
             <button [routerLink]="'/device/' + device.id" mat-raised-button><mat-icon>edit</mat-icon></button>
             <button (click)="deleteDevice(device.id)" mat-raised-button><mat-icon>delete</mat-icon></button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <mat-form-field>
+                <mat-label>New device name</mat-label>
+                <input type="text" matInput #newName />
+            </mat-form-field>
+        </td>
+        <td>
+            <button type="submit" mat-raised-button (click)="addNewDevice(newName)">
+                <mat-icon>add</mat-icon>
+            </button>
         </td>
     </tr>
 </table>

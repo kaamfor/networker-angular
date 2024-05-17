@@ -1,1 +1,28 @@
-<p>register works!</p>
+<h1>Login to configurator</h1>
+<p *ngIf="signupInfo" color="danger">{{signupInfo}}</p>
+<form [formGroup]="registerForm" (submit)="submitSignup()">
+    <div>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input type="email" formControlName="email" matInput />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input type="password" formControlName="password" matInput />
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Confirm password</mat-label>
+            <input type="password" formControlName="rePassword" matInput />
+        </mat-form-field>
+    </div>
+
+    <div>
+        <button type="submit" mat-raised-button>
+            Submit
+        </button>
+    </div>
+</form>

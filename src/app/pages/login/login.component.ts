@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/User';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -27,7 +27,16 @@ export class LoginComponent implements OnChanges, OnInit {
   }
 
   ngOnInit(): void {
-    // TODO: get stored params
+    if (this.isLoggedIn) {
+      this.router.navigateByUrl('/devices');
+    }
+
+    if (this.storedEmail?.length) {
+      this.loginForm.patchValue({
+        email: this.storedEmail,
+        rememberMe: true
+      });
+    }
   }
 
   loginForm = this.createForm({
@@ -36,8 +45,26 @@ export class LoginComponent implements OnChanges, OnInit {
     rememberMe: false
   });
 
+  get isLoggedIn(): boolean {
+    return JSON.parse(localStorage.getItem('isLoggedIn') as string) as boolean;
+  }
+
+  get storedEmail() {
+    return localStorage.getItem('rememberedEmail') as string;
+  }
+  set storedEmail(email: string) {
+    localStorage.setItem('rememberedEmail', email);
+  }
+
   createForm(model: UserLogin) {
-    return this.fb.group(model);
+    let form = this.fb.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      rememberMe: [false, Validators.required]
+    });
+    form.setValue(model);
+
+    return form;
   }
 
   submitLogin() {
@@ -47,6 +74,12 @@ export class LoginComponent implements OnChanges, OnInit {
 
       this.authService.login(creds.email, creds.password).then(
         result => {
+          if (creds.rememberMe) {
+            this.storedEmail = creds.email as string;
+          }
+          else {
+            this.storedEmail = '';
+          }
           this.router.navigateByUrl('/devices');
         },
         reason => {
