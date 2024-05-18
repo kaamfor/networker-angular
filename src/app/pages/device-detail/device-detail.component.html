@@ -1,5 +1,6 @@
 <ng-template [ngIf]="this.device !== undefined">
     <h1>Device details</h1>
+    <p>Name: {{this.device.name}}</p>
     <div>
         <app-interface-editor [interfaceList]="this.device.settings.interfaceList" (listSubmit)="interfaceListSubmitted($event)"></app-interface-editor>
     </div>

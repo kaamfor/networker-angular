@@ -1,0 +1,8 @@
+.parent-div {
+    text-align: center;
+}
+
+.parent-div>* {
+    display: inline-block;
+    margin: 0 auto;
+}
